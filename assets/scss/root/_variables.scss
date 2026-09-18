@@ -1,0 +1,50 @@
+/*----------------------------------------------
+    # All Variables here
+----------------------------------------------*/
+:root {
+
+    --body: #171717;
+    --black: #000;
+    --white: #FFF;
+    --theme: #171717;
+    --theme2: #7A7A7A;
+    --theme3: #FAF8FF;
+    --title: #FFFFFF;
+    --orange: #e78c45;
+    --yellow: #EEFB13;
+    --text2: rgba(255, 255, 255, 0.7);
+    --border: rgba(255, 255, 255, 0.1);
+    --border-2: rgba(255, 255, 255, 0.05);
+    --border-3: rgba(255, 255, 255, 0.15);
+    --bg-1: #1d1d1d;
+    --bg-2: #F6F7FF;
+
+    --main-container: 1490px;
+    --container-gutters: 30px;
+    --section-space: 120px;
+    --section-space-mobile: 80px;
+    --section-title-space: 60px;
+    --ripple-ani-duration: 5s;
+    --box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.5);
+    --box-shadow-2: 0px 4px 25px rgba(238, 251, 19, 0.1);
+}
+
+// Theme Color - Defualt Colors
+$black: var(--black);
+$white-color: var(--white);
+$yellow-color: var(--yellow);
+$theme-color: var(--theme);
+$theme-color-2: var(--theme2);
+$theme-color-3: var(--theme3);
+$title-color: var(--title);
+$orange-color: var(--orange);
+$text-color2: var(--text2);
+$border-color: var(--border);
+$border-color-2: var(--border-2);
+$border-color-3: var(--border-3);
+$border-color-4: var(--border-4);
+$border-color-5: var(--border-5);
+$bg-color-1: var(--bg-1);
+$bg-color-2: var(--bg-2);
+$shadow: var(--box-shadow);
+$body-color: var(--body);

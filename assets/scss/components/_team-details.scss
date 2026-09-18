@@ -1,0 +1,140 @@
+@use '../root' as *;
+@use '../utilities' as *;
+
+.team-details-wrapper {
+    &.style1 {
+        .team-details-content {
+            padding-top: 70px;
+            @include breakpoint (max-lg) {
+                padding-top: 0px;
+                
+            }
+    
+            .details-info {
+                h3 {
+                    color: $white-color;                    
+                    font-family: $title-font;
+                    font-size: 40px;
+                    font-style: normal;
+                    font-weight: 700;
+                    line-height: 50px; /* 125% */
+                    margin-bottom: 8px;
+                }
+    
+                span {
+                    color: $white-color;                    
+                    font-family: $body-font;
+                    font-size: 18.281px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: 34px; /* 185.983% */
+                    opacity: 0.8;
+                }
+                p {
+                    color: $white-color;                    
+                    font-family: $body-font;
+                    font-size: 18.281px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: 34px; /* 185.983% */
+                    opacity: 0.8;
+                    border-bottom: 1px solid $border-color;
+                    padding-bottom: 16px;
+                }
+            }            
+            .author-meta {
+                margin-top: 13px;
+                .fancy-box {
+                    gap: 15px;
+                }
+            }
+        }
+        
+        .team-details-image {
+            position: relative;
+            .team-thumb {
+                border-radius: 20px;
+                img {
+                    @include imgw;
+                    border-radius: 20px;
+                }
+            }
+            .social-profile {
+                position: absolute;
+                bottom: 5%;
+                right: 58%;
+            }
+        }
+    
+        .social-profile {
+            position: absolute;
+            right: 0px;
+            bottom: 0px;
+            max-height: 380px;
+        
+            ul {
+              max-width: 50px;
+              padding: 5px 0;
+              margin: 0 auto;
+              display: flex;
+              column-gap: 20px;
+        
+          
+              li {
+                    margin-bottom: 8px;
+                    display: block;
+                    text-align: center;
+            
+                    &:last-child {
+                    margin-bottom: 0px;
+                    }
+            
+                    a {
+                        border-radius: 999px;
+                        background: $theme-color;
+                        width: 35px;
+                        height: 35px;
+                        color: $yellow-color;
+                        font-family: "Font Awesome 6 Brands";
+                        font-size: 14px;
+                        font-style: normal;
+                        font-weight: 400;
+                        line-height: normal;
+                        line-height: 35px;
+                        background: $theme-color;
+                        display: inline-block;
+            
+                        img {
+                            width: 35px;
+                            height: 35px;
+                            flex-shrink: 0;
+                        }        
+                    }
+                }
+            } 
+            
+        }
+        .team-single-history {
+            h3 {
+                color: $white-color;                
+                font-family: $title-font;
+                font-size: 30px;
+                font-style: normal;
+                font-weight: 700;
+                line-height: 36px; /* 120% */
+                text-transform: capitalize;
+            }
+            p {
+                color: $white-color;                
+                font-family: $body-font;
+                font-size: 18.281px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 34px; /* 185.983% */
+                opacity: 0.8;
+            }
+        }
+    }
+}
+
+

@@ -1,0 +1,344 @@
+@use '../root' as *;
+@use '../utilities' as *;
+
+
+
+/*----------------------------------------------
+    # Header style here
+----------------------------------------------*/
+.transparent-header {
+    position: absolute;
+    left: 0;
+    right: 0;
+    z-index: 999;
+}
+
+.header-bg {
+    background-color: $theme-color;
+}
+
+.header-sticky.sticky {
+    background-color: $theme-color;
+}
+
+.main-menu {
+    padding-left: 113px;
+
+    & ul {
+        & li {
+            display: inline-block;
+            margin: 0 12px;
+            position: relative;
+
+            & a {
+                display: inline-block;
+                padding: 30px 0;
+
+                color: $white-color;
+                font-family: $body-font;
+                font-size: 15px;
+                font-style: normal;
+                font-weight: 500;
+                line-height: 32px;
+
+                i {
+                    margin-left: 8px;
+                }
+            }
+
+
+            & .sub-menu {
+                position: absolute;
+                top: 105%;
+                left: 0;
+                background: white;
+                width: 175px;
+                padding: 0 0;
+                opacity: 0;
+                visibility: hidden;
+
+                transition: .3s;
+
+                & li {
+                    display: block;
+                    margin: 0;
+                    transition: .3s;
+                    border-bottom: 1px solid $border-color;
+
+                    & a {
+                        color: black;
+                        display: block;
+                        padding: 4px 25px;
+                        font-size: 17px;
+                    }
+
+                    & .sub-menu {
+                        left: 100%;
+                        top: 105%;
+                        opacity: 0;
+                        visibility: hidden;
+                    }
+
+                    &:hover {
+                        background: $body-color;
+
+                        &>a {
+                            color: $white-color;
+                        }
+
+                        & .sub-menu {
+                            opacity: 1;
+                            visibility: visible;
+                            top: 100%;
+                        }
+                    }
+                }
+
+            }
+
+            &:hover {
+                & a {
+                    color: $yellow-color;
+                }
+
+                & .sub-menu {
+                    opacity: 1;
+                    visibility: visible;
+                    top: 100%;
+                }
+            }
+        }
+    }
+}
+
+.sidebar__toggle {
+    color: $white-color;
+    margin-left: 30px;
+    font-size: 24px;
+    padding: 30px 0;
+
+    @include breakpoint(max-md) {
+        padding: 20px 0;
+    }
+}
+
+
+// Sticky Scroll Start
+@keyframes ctfadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Example Usage */
+.ctfadeInDown {
+    animation: ctfadeInDown 0.8s ease-in-out;
+    -webkit-animation: ctfadeInDown 0.8s ease-in-out;
+}
+
+
+// sticky header
+.header-sticky {
+    position: fixed;
+    background-color: $theme-color;
+    top: 0;
+    left: 0;
+    right: 0;
+    animation: 500ms ease-in-out 0s normal none 1 running ctfadeInDown;
+    -webkit-animation: 500ms ease-in-out 0s normal none 1 running ctfadeInDown;
+    z-index: 999;
+}
+
+// Sticky Scroll End
+
+
+//>>>>> Offcanvas Start <<<<<//
+.offcanvas__info {
+    background: $title-color none repeat scroll 0 0;
+    border-left: 2px solid $theme-color;
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 400px;
+    height: 100%;
+    -webkit-transform: translateX(calc(100% + 80px));
+    -moz-transform: translateX(calc(100% + 80px));
+    -ms-transform: translateX(calc(100% + 80px));
+    -o-transform: translateX(calc(100% + 80px));
+    transform: translateX(calc(100% + 80px));
+    -webkit-transition: transform 0.45s ease-in-out, opacity 0.45s ease-in-out;
+    -moz-transition: transform 0.45s ease-in-out, opacity 0.45s ease-in-out;
+    transition: transform 0.45s ease-in-out, opacity 0.45s ease-in-out;
+    z-index: 99999;
+    overflow-y: scroll;
+    overscroll-behavior-y: contain;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+.offcanvas__info.info-open {
+    opacity: 1;
+    -webkit-transform: translateX(0);
+    -moz-transform: translateX(0);
+    -ms-transform: translateX(0);
+    -o-transform: translateX(0);
+    transform: translateX(0);
+}
+
+.offcanvas__logo {
+    a {
+        img {
+            max-width: 100%;
+        }
+
+        .iziti {
+            color: var(--white);
+            font-feature-settings: "liga" off, "clig" off;
+            font-family: $title-font;
+            font-size: 24px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 30px;
+        }
+    }
+}
+
+.offcanvas__wrapper {
+    position: relative;
+    height: 133vh;
+    padding: 30px 30px;
+    background-color: $bg-color-1;
+
+    .offcanvas__content {
+        .text {
+            color: $white-color;
+        }
+
+        .offcanvas__close {
+            width: 35px;
+            height: 35px;
+            line-height: 35px;
+            text-align: center;
+            border-radius: 15%;
+            background-color: $yellow-color;
+            position: relative;
+            z-index: 9;
+            cursor: pointer;
+
+            i {
+                color: $body-color;
+            }
+        }
+
+        .offcanvas__contact {
+            margin-top: 20px;
+
+            h4 {
+                color: $white-color;
+            }
+
+            ul {
+                margin-top: 20px;
+
+                li {
+                    font-size: 16px;
+                    font-weight: 600;
+                    text-transform: capitalize;
+
+                    a {
+                        color: $white-color;
+                    }
+
+                    &:not(:last-child) {
+                        margin-bottom: 15px;
+                    }
+
+                    .offcanvas__contaicon {
+                        margin-right: 20px;
+
+                        i {
+                            color: $theme-color-2;
+                        }
+                    }
+                }
+            }
+
+            span {
+                text-transform: initial;
+            }
+
+            .header-button {
+
+                .theme-btn {
+                    width: 100%;
+                    padding: 16px 40px;
+                    text-transform: capitalize !important;
+                }
+            }
+
+            .social-icon {
+                margin-top: 30px;
+                gap: 10px;
+
+                a {
+                    width: 45px;
+                    height: 45px;
+                    line-height: 45px;
+                    text-align: center;
+                    font-size: 16px;
+                    display: block;
+                    background: $theme-color;
+                    color: $white-color;
+                    border-radius: 15%;
+                    -webkit-transition: all .4s ease-in-out;
+                    transition: all .4s ease-in-out;
+                    text-align: center;
+                    border: 1px solid $border-color;
+
+                    &:hover {
+                        background-color: $theme-color-2;
+                        color: $title-color !important;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.offcanvas__overlay {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    background: #151515;
+    z-index: 900;
+    top: 0;
+    opacity: 0;
+    visibility: hidden;
+    right: 0;
+}
+
+.offcanvas__overlay.overlay-open {
+    opacity: 0.8;
+    visibility: visible;
+}
+
+@media (max-width:450px) {
+    .offcanvas__info {
+        width: 300px;
+    }
+}
+
+@media (max-width: 575px) {
+    .offcanvas__wrapper {
+        padding: 20px;
+    }
+}

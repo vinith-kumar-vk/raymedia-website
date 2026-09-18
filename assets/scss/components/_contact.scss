@@ -1,0 +1,206 @@
+@use '../root' as *;
+@use '../utilities' as *;
+
+
+.contawrapper {
+    &.style1 {    
+        .map-section {
+            text-align: center;
+            .googlemap {
+                p {
+                    padding: 0px;
+                    @include breakpoint (lg) {
+                        padding: 0 40px;
+                    }
+                }
+            }
+        }
+        .px-lg-70 {
+            @include breakpoint (lg) {
+                padding-left: 40px;
+            }
+        }
+        .author-meta {
+            padding-top: 30px;       
+        }        
+    } 
+
+    &.style2 {        
+        .features-content {
+            .desc {
+                color: $white-color;                
+                font-family: $body-font;
+                font-size: 18.281px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 34px; /* 185.983% */
+                opacity: 0.8;
+                margin-bottom: 30px;
+            }
+            .help-content {
+                display: flex;
+                align-items: center;
+                column-gap: 15px;
+                .icon {
+                    i {
+                        color: $yellow-color;
+                        font-size: 16px;
+                        font-style: normal;
+                        font-weight: 900;
+                        line-height: normal;
+                        padding: 12px;
+                        background-color: $theme-color;
+                        border-radius: 50px;
+                        -webkit-border-radius: 50px;
+                        -moz-border-radius: 50px;
+                        -ms-border-radius: 50px;
+                        -o-border-radius: 50px;
+                    }
+                }
+                .help-box {
+                    h5 {
+                        color: $white-color;                        
+                        font-family: $body-font;
+                        font-size: 18.281px;
+                        font-style: normal;
+                        font-weight: 400;
+                        line-height: 34px; /* 185.983% */
+                        opacity: 0.8;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+.contaform {
+    &.style1 {
+        border-radius: 20px;
+        background-color: $theme-color;
+        padding: 40px;
+        @include breakpoint (max-md) {
+            padding: 20px;
+        }
+        h3 {
+            color: $white-color;                
+            font-family: $title-font;
+            font-size: 30px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 36px; /* 120% */
+            text-transform: capitalize;
+        }
+
+        input.form-control,
+        textarea.form-control {
+            color: $white-color;
+            font-family: $body-font;
+            font-size: 18.281px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 34px; /* 185.983% */
+            outline: none;
+            box-shadow: none;
+            background-color: $theme-color;
+            border: none;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.20);
+            padding: 17px 10px;
+            border-radius: 5px;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            -ms-border-radius: 5px;
+            -o-border-radius: 5px;
+        }
+
+
+        input.form-control:focus,
+        textarea.form-control:focus {
+            color: $white-color;
+            background-color: $theme-color;
+            border: none;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.20);
+            outline: none;
+            box-shadow: none;
+        }
+    }
+    &.style2 {
+        border-radius: 20px;
+        border: 1px solid $white-color;
+        padding: 60px 40px;
+
+        @include breakpoint (max-xl) {
+            padding: 30px 15px;
+        }
+        h2 {
+            color: $white-color;                
+            font-family: $title-font;
+            font-size: 45.898px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 50px; /* 108.936% */
+            margin-bottom: 60px;
+        }
+        .input-field {
+            .form-clt {        
+                input,
+                textarea,
+                select {
+                    width: 100%;
+                    outline: none;
+                    background-color: $body-color;
+                    border-radius: 30px;
+                    border: 1px solid $border-color;
+                    font-weight: 400;
+    
+                    &::placeholder {
+                        color: $white-color;
+                    }
+    
+                }
+            }
+        }
+    }
+    &.style3 {
+        border-radius: 20px;
+        border: 1px solid $yellow-color;
+        background: $theme-color;
+        padding: 60px 40px;
+
+        @include breakpoint (max-md) {
+            padding: 20px;
+        }
+
+        .input-field {
+            .form-clt {        
+                input,
+                select {
+                    width: 100%;
+                    outline: none;
+                    border-radius: 999px;
+                    background-color: #262626;
+                    font-weight: 400;
+                    border-bottom: none;
+    
+                    &::placeholder {
+                        color: $white-color;
+                    }
+    
+                }
+                textarea {
+                    width: 100%;
+                    outline: none;
+                    border-radius: 20px;
+                    background-color: #262626;
+                    font-weight: 400;
+                    border-bottom: none;
+    
+                    &::placeholder {
+                        color: $white-color;
+                    }
+    
+                }
+            }
+        }
+    }    
+}

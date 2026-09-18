@@ -1,0 +1,632 @@
+@use '../root' as *;
+
+/*----------------------------------------------
+    # Buttons style here
+----------------------------------------------*/
+.btn {
+    color: $white-color;
+    font-family: $body-font;
+    font-size: 13.016px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 27px;
+    text-transform: uppercase;
+    display: flex;
+    height: 60px;
+    padding: 20px 30px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+    border-radius: 999px;
+    border: 1px solid $yellow-color;
+    width: max-content;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+
+    i {
+        margin-left: 5px;
+        transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+
+    &::before {
+        content: "";
+        width: 0;
+        height: 50.5%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: $yellow-color;
+        transition: all 0.4s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+        z-index: -1;
+    }
+
+    &::after {
+        content: "";
+        width: 0;
+        height: 50%;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        background-color: $yellow-color;
+        transition: all 0.4s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+        z-index: -1;
+    }
+
+    &:hover {
+        color: $black;
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(238, 251, 19, 0.2);
+        border-radius: 100px;
+
+        &::before,
+        &::after {
+            width: 100%;
+        }
+
+        i {
+            transform: translateX(5px);
+        }
+
+        .getQuote {
+            color: $black !important;
+        }
+    }
+
+
+    &.style2 {
+        background: $white-color;
+        border-radius: 20px;
+        border: 1px solid $border-color;
+        color: $theme-color;
+        text-align: center;
+        font-family: $body-font;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+        @include transition;
+
+        i {
+            margin-left: 5px;
+        }
+
+
+        &::before {
+            content: "";
+            background-color: $theme-color;
+            width: 0;
+            height: 52%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            -webkit-transition: all 0.3s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+            transition: all 0.3s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+            z-index: -1;
+        }
+
+        &::after {
+            content: "";
+            background-color: $theme-color;
+            width: 0;
+            height: 50%;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            -webkit-transition: all 0.3s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+            transition: all 0.3s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+            z-index: -1;
+        }
+
+        i {
+            margin-left: 10px;
+            background: rgba(11, 11, 11, 0.10);
+            padding: 6px;
+            border-radius: 50px;
+        }
+
+        &:hover {
+            color: $white-color;
+            border-radius: 20px;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(238, 251, 19, 0.1);
+
+            &::before,
+            &::after {
+                width: 100%;
+            }
+        }
+
+    }
+
+    &.style3 {
+        background: $theme-color-2;
+        border-radius: 20px;
+        border: 1px solid $border-color;
+        color: $white-color;
+        text-align: center;
+        font-family: $body-font;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+        @include transition;
+
+        i {
+            margin-left: 5px;
+        }
+
+        &::before {
+            content: "";
+            width: 0;
+            height: 50%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            -webkit-transition: all 0.3s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+            transition: all 0.3s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+            z-index: -1;
+        }
+
+        &::after {
+            content: "";
+            width: 0;
+            height: 50%;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            -webkit-transition: all 0.3s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+            transition: all 0.3s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+            z-index: -1;
+        }
+
+        i {
+            margin-left: 10px;
+        }
+
+        &:hover {
+            color: $white-color;
+            border-radius: 20px;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(238, 251, 19, 0.1);
+
+            &::before,
+            &::after {
+                width: 100%;
+            }
+        }
+    }
+
+
+
+    &.style5 {
+        background: $white-color;
+        color: $title-color;
+        min-width: 230px;
+
+
+        &::before {
+            content: "";
+            background-color: $theme-color;
+            width: 0;
+            height: 50%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            -webkit-transition: all 0.3s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+            transition: all 0.3s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+            z-index: -1;
+        }
+
+        &::after {
+            content: "";
+            background-color: $theme-color;
+            width: 0;
+            height: 50%;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            -webkit-transition: all 0.3s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+            transition: all 0.3s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+            z-index: -1;
+        }
+
+        i {
+            margin-left: 10px;
+        }
+
+        &:hover {
+            color: $white-color;
+            border-radius: 100px;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(238, 251, 19, 0.1);
+
+            &::before,
+            &::after {
+                background-color: $title-color;
+                width: 100%;
+            }
+        }
+
+    }
+
+    &.style6 {
+        padding: 20px 36px;
+        border-radius: 100px;
+        background: $theme-color-2;
+        color: $white-color;
+        -webkit-border-radius: 100px;
+        -moz-border-radius: 100px;
+        -ms-border-radius: 100px;
+        -o-border-radius: 100px;
+
+        &:hover {
+            color: $white-color;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(238, 251, 19, 0.1);
+
+            &:before,
+            &:after {
+                width: 100%;
+            }
+        }
+    }
+
+    &.style7 {
+        color: $white-color;
+        font-family: $body-font;
+        font-size: 13.016px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 27px;
+        text-transform: uppercase;
+        display: inline-flex;
+        height: 60px;
+        padding: 20px 30px;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        flex-shrink: 0;
+        border-radius: 999px;
+        border: 1px solid $border-color;
+        @include transition;
+
+        i {
+            margin-left: 5px;
+        }
+
+
+        i {
+            margin-left: 10px;
+            background: $theme-color;
+            padding: 6px;
+            border-radius: 50px;
+            transition: transform 0.3s ease;
+        }
+
+        &:hover {
+            color: $yellow-color;
+            border-color: $yellow-color;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(238, 251, 19, 0.1);
+
+            i {
+                transform: translateX(5px);
+                color: $yellow-color;
+            }
+        }
+    }
+
+    &.style8 {
+        color: $body-color;
+        font-family: $body-font;
+        font-size: 13.016px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 27px;
+        text-transform: uppercase;
+        display: inline-flex;
+        height: 60px;
+        padding: 20px 30px;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        flex-shrink: 0;
+        border-radius: 999px;
+        background: $yellow-color;
+        @include transition;
+        width: 100%;
+
+        i {
+            margin-left: 5px;
+        }
+
+
+        &::before {
+            content: "";
+            background-color: $theme-color;
+            width: 0;
+            height: 52%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            -webkit-transition: all 0.3s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+            transition: all 0.3s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+            z-index: -1;
+        }
+
+        &::after {
+            content: "";
+            background-color: $theme-color;
+            width: 0;
+            height: 50%;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            -webkit-transition: all 0.3s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+            transition: all 0.3s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+            z-index: -1;
+        }
+
+        i {
+            margin-left: 10px;
+            background: rgba(11, 11, 11, 0.10);
+            padding: 6px;
+            border-radius: 50px;
+        }
+
+        &:hover {
+            border-radius: 999px;
+            border: 1px solid $border-color;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(238, 251, 19, 0.1);
+
+            &::before,
+            &::after {
+                width: 100%;
+            }
+        }
+
+    }
+
+    &.style9 {
+        display: inline-flex;
+        height: 60px;
+        padding: 20px 95px;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        flex-shrink: 0;
+        border-radius: 999px;
+        background: $theme-color;
+        color: $white-color;
+        border: 1px solid $border-color;
+        text-align: center;
+        font-family: $body-font;
+        font-size: 13.016px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 27px;
+        text-transform: uppercase;
+        margin-top: 7px;
+        @include transition;
+
+        @include breakpoint (max-sm) {
+            padding: 20px 30px;
+        }
+
+        i {
+            color: $body-color;
+            font-size: 12px;
+            font-style: normal;
+            font-weight: 900;
+            line-height: normal;
+            margin-left: 5px;
+            background: $yellow-color;
+            padding: 5px;
+            border-radius: 50px;
+        }
+
+        &:hover {
+            color: $body-color !important;
+            background: $yellow-color;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(238, 251, 19, 0.1);
+
+            &:before,
+            &:after {
+                border-width: 100%;
+            }
+
+            i {
+                background: rgba(11, 11, 11, 0.10);
+            }
+        }
+    }
+
+    &.style10 {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        flex-shrink: 0;
+        color: $white-color;
+        text-align: center;
+        font-family: $body-font;
+        font-size: 13.016px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 27px;
+        text-transform: uppercase;
+        border: none;
+        padding: 0;
+        height: 0;
+
+        i {
+            color: $body-color;
+            font-size: 12px;
+            font-style: normal;
+            font-weight: 900;
+            line-height: normal;
+            margin-left: 5px;
+            background: $yellow-color;
+            padding: 5px;
+            border-radius: 50px;
+        }
+
+        &:hover {
+            color: $yellow-color !important;
+            transform: scale(1.05);
+            text-shadow: 0 0 10px rgba(238, 251, 19, 0.5);
+        }
+    }
+
+    &.style-border {
+        background: transparent;
+        color: var(--white);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+
+        &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background-color: var(--yellow);
+            transition: all 0.4s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+            z-index: -1;
+        }
+
+        &:hover {
+            color: $black !important;
+            border-color: var(--yellow);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(238, 251, 19, 0.1);
+
+            &::before {
+                width: 100%;
+            }
+        }
+    }
+}
+
+
+/* Slider Arrow Button */
+
+.slider-arrow-btn {
+    display: flex;
+    gap: 15px;
+}
+
+.slider-arrow {
+    &.style1 {
+        display: inline-block;
+        width: 60px;
+        height: 60px;
+        flex-shrink: 0;
+        text-align: center;
+        background: $theme-color;
+        color: $yellow-color;
+        margin-top: -0.4em;
+        box-shadow: 0px 10px 30px 0px rgba(52, 55, 170, 0.15);
+        border-radius: 50%;
+        -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
+        -ms-border-radius: 50%;
+        -o-border-radius: 50%;
+        @include transition;
+
+        &:hover {
+            background: $yellow-color;
+            color: $body-color;
+            box-shadow: 0px 10px 30px 0px rgba(52, 55, 170, 0.15);
+        }
+
+        &.style2 {
+            background: $theme-color-2;
+            color: $title-color;
+
+            &:hover {
+                background: $theme-color;
+                color: $white-color;
+            }
+        }
+    }
+
+    &.style2 {
+        display: inline-block;
+        flex-shrink: 0;
+        text-align: center;
+        color: $white-color;
+        @include transition;
+        border-radius: 999px;
+        border: 2px solid $theme-color;
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 900;
+        line-height: normal;
+    }
+
+    &.style3 {
+        display: inline-block;
+        flex-shrink: 0;
+        text-align: center;
+        color: $white-color;
+        @include transition;
+        border-radius: 999px;
+        border: 2px solid $theme-color;
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 900;
+        line-height: normal;
+
+        width: 60px;
+        height: 60px;
+        flex-shrink: 0;
+
+        &:hover {
+            color: #EEFB13;
+            border-radius: 999px;
+            border: 1px solid $yellow-color;
+        }
+    }
+
+    &.style-floating {
+        width: 60px;
+        height: 60px;
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--white);
+        font-size: 1.2rem;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        cursor: pointer;
+        z-index: 10;
+
+        &:hover {
+            background: var(--yellow);
+            color: var(--black) !important;
+            border-color: var(--yellow);
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+
+            i {
+                transform: scale(1.2);
+            }
+        }
+
+        i {
+            transition: transform 0.3s ease;
+        }
+    }
+}

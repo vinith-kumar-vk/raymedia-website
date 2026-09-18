@@ -1,0 +1,186 @@
+@use '../root' as *;
+@use '../utilities' as *;
+
+.testimonial-card {
+    &.style1 {
+        padding: 40px;
+        border-radius: 20px;
+        background: $black;
+
+        .quote-icon {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 7;
+        }
+
+        @include breakpoint (max-sm) {
+            padding: 20px;
+        }
+
+        .testimonial-header {
+            display: flex;
+            justify-content: space-between;
+
+            @include breakpoint (max-sm) {
+                flex-wrap: wrap;
+                padding-bottom: 30px;
+            }
+
+            .star-wrapper {
+                border-radius: 999px;
+                background: $body-color;
+                display: inline-flex;
+                padding: 10px 20px;
+                align-items: flex-start;
+                gap: 10px;
+                height: fit-content;
+                margin-top: 10px;
+
+                i {
+                    color: #FFB34E;
+                    font-size: 20px;
+                    font-style: normal;
+                    font-weight: 900;
+                    line-height: normal;
+
+                    &:last-child {
+                        color: $theme-color;
+                    }
+                }
+            }
+
+            .profile-wrapper {
+                .quet-icon {
+                    padding-bottom: 20px;
+                }
+
+                .name {
+                    color: $white-color;
+                    font-family: $title-font;
+                    font-size: 20.625px;
+                    font-style: normal;
+                    font-weight: 700;
+                    line-height: 33px;
+                    /* 160% */
+                }
+
+                .designation {
+                    color: $white-color;
+                    font-family: $body-font;
+                    font-size: 18.281px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: 34px;
+                    /* 185.983% */
+                    padding-bottom: 20px;
+                }
+            }
+        }
+
+        .testimonial-content {
+            p {
+                color: $white-color;
+                font-family: $body-font;
+                font-size: 24px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 34px;
+                /* 141.667% */
+            }
+        }
+
+        .testi-content {
+            margin-bottom: 30px;
+
+            p.text {
+                color: $white-color;
+                font-family: $body-font;
+                font-size: 20px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 32px;
+
+                @include breakpoint(max-md) {
+                    font-size: 18px;
+                    line-height: 28px;
+                }
+            }
+        }
+
+        .testi-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-top: 1px solid rgba($white-color, 0.1);
+            padding-top: 25px;
+
+            @include breakpoint(max-sm) {
+                flex-wrap: wrap;
+                gap: 15px;
+            }
+
+            .user-info {
+                display: flex;
+                align-items: center;
+                gap: 15px;
+
+                .thumb {
+                    width: 50px;
+                    height: 50px;
+                    border-radius: 50%;
+                    overflow: hidden;
+
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                    }
+                }
+
+                .info {
+                    .name {
+                        color: $white-color;
+                        font-family: $title-font;
+                        font-size: 18px;
+                        font-weight: 700;
+                        margin-bottom: 2px;
+                    }
+
+                    .handle {
+                        color: $theme-color-2;
+                        font-family: $body-font;
+                        font-size: 14px;
+                        font-weight: 400;
+                        margin-bottom: 0;
+                    }
+                }
+            }
+
+            .social-icons {
+                display: flex;
+                gap: 10px;
+
+                a {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 35px;
+                    height: 35px;
+                    border-radius: 50%;
+                    background: rgba($white-color, 0.05);
+                    color: $white-color;
+                    transition: all .3s ease-in-out;
+                    font-size: 14px;
+
+                    &:hover {
+                        background: $theme-color-2;
+                        color: $theme-color;
+                        transform: translateY(-3px);
+                    }
+                }
+            }
+        }
+    }
+
+}

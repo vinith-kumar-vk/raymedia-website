@@ -1,0 +1,130 @@
+@use '../root' as *;
+@use '../utilities' as *;
+
+.fasection {
+    position: relative;
+    z-index: 1;
+
+    .fact-shape-blur {
+        position: absolute;
+        width: 600px;
+        height: 600px;
+        border-radius: 50%;
+        filter: blur(160px);
+        z-index: -1;
+        opacity: 0.08;
+        pointer-events: none;
+        animation: floating 12s ease-in-out infinite;
+
+        &.shape-1 {
+            background: var(--yellow);
+            top: -10%;
+            right: -15%;
+        }
+
+        &.shape-2 {
+            background: #6366f1;
+            bottom: -5%;
+            left: -10%;
+            animation-delay: -6s;
+        }
+    }
+
+    .section-desc {
+        font-size: 1.15rem;
+        line-height: 1.8;
+        max-width: 95%;
+        color: rgba(255, 255, 255, 0.7);
+    }
+
+    .faimage-wrap {
+        position: relative;
+        img {
+            max-height: 550px;
+            object-fit: cover;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            transition: all 0.5s ease;
+
+            &:hover {
+                transform: scale(1.02);
+                border-color: rgba(238, 251, 19, 0.3);
+                box-shadow: 0 30px 70px rgba(0, 0, 0, 0.5);
+            }
+        }
+    }
+}
+
+.counter-item {
+    padding: 20px;
+    transition: all 0.3s ease;
+
+    h3,
+    div:first-child {
+        font-size: 5.5rem;
+        margin-bottom: 0.5rem;
+        line-height: 1;
+        font-weight: 800;
+        letter-spacing: -2px;
+        transition: all 0.3s ease;
+
+        @include breakpoint(max-md) {
+            font-size: 4rem;
+        }
+
+        &.outline-text {
+            -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.2);
+            color: transparent;
+            &:hover {
+                -webkit-text-stroke-color: var(--yellow);
+            }
+        }
+        
+        &:not(.outline-text) {
+            background: linear-gradient(to bottom, #fff, rgba(255, 255, 255, 0.7));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    }
+
+    p {
+        font-size: 1.1rem;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: rgba(255, 255, 255, 0.5) !important;
+    }
+
+    &:hover {
+        transform: translateY(-5px);
+        h3, div:first-child {
+            &:not(.outline-text) {
+                background: linear-gradient(to bottom, var(--yellow), #fff);
+                -webkit-background-clip: text;
+                background-clip: text;
+            }
+        }
+    }
+}
+
+.counter-black-box {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.6);
+    margin-top: -60px;
+    position: relative;
+    z-index: 10;
+    transition: all 0.5s ease;
+
+    @include breakpoint(max-md) {
+        margin-top: 0;
+        padding: 40px 20px !important;
+    }
+
+    &:hover {
+        background: rgba(255, 255, 255, 0.05);
+        border-color: rgba(255, 255, 255, 0.15);
+    }
+}

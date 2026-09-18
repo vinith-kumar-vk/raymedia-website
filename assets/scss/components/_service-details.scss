@@ -1,0 +1,95 @@
+
+@use '../root' as *;
+@use '../utilities' as *;
+
+.service-details-wrapper {
+    &.style1 {
+        .service-details-items {
+            .details-image {
+                border-radius: 20px;
+                img {
+                    @include imgw;
+                    border-radius: 20px;
+                }
+            }
+    
+            .details-content {
+                margin-top: 20px;
+    
+                @include breakpoint (max-sm) {
+                    margin-top: 25px;
+                }
+    
+                h3 {
+                    color: $white-color;                    
+                    font-family: $title-font;
+                    font-size: 40px;
+                    font-style: normal;
+                    font-weight: 700;
+                    line-height: 50px; /* 125% */
+    
+                    @include breakpoint (max-md) {
+                        font-size: 30px;
+                    }
+    
+                    @include breakpoint (max-sm) {
+                        font-size: 28px;
+                    }
+                }
+    
+                h4 {
+                    color: $white-color;                    
+                    font-family: $title-font;
+                    font-size: 30px;
+                    font-style: normal;
+                    font-weight: 700;
+                    line-height: 36px; /* 120% */
+                    text-transform: capitalize;
+    
+                    @include breakpoint (max-md) {
+                        font-size: 26px;
+                    }
+    
+                    @include breakpoint (max-sm) {
+                        font-size: 24px;
+                    }
+                }
+                p {
+                    color: $white-color;                    
+                    font-family: $body-font;
+                    font-size: 18.281px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: 34px; /* 185.983% */
+                    opacity: 0.8;
+                }
+                .point-content {
+                    p {
+                        color: $white-color;                        
+                        font-family: $body-font;
+                        font-size: 18.281px;
+                        font-style: normal;
+                        font-weight: 400;
+                        line-height: 34px; /* 185.983% */
+                        opacity: 0.8;
+                        margin-bottom: 20px;
+                        img {
+                            margin-right: 15px
+                        }
+                    }
+                }   
+            }
+        }
+        .faq-title {
+            h4 {
+                color: $white-color;                
+                font-family: Syne;
+                font-size: 30px;
+                font-style: normal;
+                font-weight: 700;
+                line-height: 36px; /* 120% */
+                text-transform: capitalize;
+            }
+        }
+    }
+}

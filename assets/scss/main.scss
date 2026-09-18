@@ -1,0 +1,97 @@
+/*-----------------------------------------------------------------
+Theme Name: Dizly
+Author: Codifytheme
+Author URI: https://themeforest.net/user/codifytheme 
+Version: 1.0.0 
+Description: Dizly - Creative Agency HTML Template <
+ 
+-------------------------------------------------------------------
+ CSS TABLE OF CONTENTS
+------------------------------------------------------------------- 
+1.COMPONENTS
+1.1 Header  
+1.2 Hero  
+1.3 About  
+1.4 Service  
+1.5 Service Details  
+1.6 Project  
+1.7 Project Details  
+1.8 Pricing  
+1.9 Team  
+1.10 Team Details  
+1.11 Contact  
+1.12 FAQ 
+1.13 Testimonial  
+1.14 Blog  
+1.15 Blog Details  
+1.16 Counter  
+1.17 WCU  
+1.18 Breadcrumb  
+1.19 Footer 
+1.20 CTA
+1.21 Working Process
+------------------------------------------------------------------*/
+
+/*============= 1.COMPONENTS ============*/
+/*------ 1.1 Header ------*/
+@use "components/header";
+
+/*------ 1.2 Hero ------*/
+@use "components/hero";
+
+/*------ 1.3 About ------*/
+@use "components/about";
+
+/*------ 1.4 Service ------*/
+@use "components/service";
+
+/*------ 1.5 Service Details ------*/
+@use "components/service-details";
+
+/*------ 1.6 Project ------*/
+@use "components/project";
+
+/*------ 1.7 Project Details ------*/
+@use "components/project-details";
+
+/*------ 1.8 Pricing ------*/
+@use "components/pricing";
+
+/*------ 1.9 Team ------*/
+@use "components/team";
+
+/*------ 1.10 Team Details ------*/
+@use "components/team-details";
+
+/*------ 1.11 Contact ------*/
+@use "components/contact";
+
+/*------ 1.12 FAQ ------*/
+@use "components/faq";
+
+/*------ 1.13 Testimonial ------*/
+@use "components/testimonial";
+
+/*------ 1.14 Blog ------*/
+@use "components/blog";
+
+/*------ 1.15 Blog Details ------*/
+@use "components/blog-details";
+
+/*------ 1.16 Counter ------*/
+@use "components/counter";
+
+/*------ 1.17 WCU ------*/
+@use "components/wcu";
+
+/*------ 1.18 Breadcrumb ------*/
+@use "components/breadcrumb";
+
+/*------ 1.19 Footer ------*/
+@use "components/footer";
+
+/*------ 1.20 CTA ------*/
+@use "components/cta";
+
+/*------ 1.21 Working Process ------*/
+@use "components/work-process";

@@ -1,0 +1,195 @@
+@use '../root' as *;
+@use '../utilities' as *;
+ 
+ 
+ /*----------------------------------------*/
+ /* Accordion
+/*----------------------------------------*/
+
+ .accordion {
+
+     &-item {
+         background: $body-color;
+         border-radius: 20px;
+
+         &.style1 {
+            border: 1px solid $border-color-2;
+        }
+     }
+
+     &-header {
+         margin: 0;
+     }
+
+     &-button {
+         color: $white-color;
+         font-family: $title-font;
+         font-size: 17.969px;
+         font-style: normal;
+         font-weight: 600;
+         line-height: 30px;
+         padding: 30px 21px 20px 30px;
+         width: 100%;
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+         background: $theme-color;
+         position: relative;
+         border-top-left-radius: 20px;
+         border-top-right-radius: 20px;
+         border-bottom-left-radius: 0;
+         border-bottom-right-radius: 0;
+       
+         strong {
+            text-align: start;
+            font-size: 17.969px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 30px;
+         }
+         @include breakpoint (md){
+            strong {
+                padding-right: 16px;
+            }
+         }
+         @include breakpoint (max-xs){
+            strong {
+                max-width: 300px;
+            }
+        }
+         @include breakpoint (max-xmsmall){
+            strong {
+                max-width: 257px;
+            }
+        }
+         @include breakpoint (max-xxsmall){
+            strong {
+             font-size: 14px;
+            }
+        }
+
+         span {
+            margin-right: 16px;
+            font-size: 20px;
+            font-weight: 900;
+            display: inline-block;
+            color: #0B0B0B;
+            z-index: 11;
+
+            &.plus {
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.3s linear;
+                display: none;
+            }
+
+            &.minus {
+                opacity: 1;
+                visibility: visible;
+                transition: all 0.3s linear;
+                display: block;
+            }
+
+        }
+
+        &.collapsed {
+            padding: 20px 21px;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            @include breakpoint (max-xmsmall){
+                strong {
+                    max-width: 257px;
+                    text-align: start;
+                }
+            }
+
+            .plus {
+                opacity: 1;
+                visibility: visible;
+                display: block;
+            }
+
+            .minus {
+        
+                opacity: 0;
+                visibility: hidden;
+                display: none;
+            }
+
+            &:after {
+                background: $yellow-color;
+            }
+        }
+
+
+         &:after {
+             content: "";
+             width: 40px;
+             height: 40px;
+             flex-shrink: 0;
+             position: absolute;
+             right: 25px;
+             z-index: 5;
+             border-radius: 999px;
+             background: $yellow-color;
+
+             @include breakpoint (max-xmsmall){
+                width: 30px;
+                height: 30px;
+                right: 30px;
+             }
+
+         }
+     }
+
+     &-body {
+         background: $theme-color;
+         padding: 0 30px 30px;
+         fill: $white-color;
+         stroke-width: 1px;
+         border: 1px solid rgba(25, 25, 25, 0.10);
+         border-top: 0;
+         filter: drop-shadow(0px 4px 60px rgba(0, 0, 0, 0.05));
+         color: $white-color;
+         font-family: $body-font;
+         font-size: 18.281px;
+         font-style: normal;
+         font-weight: 400;
+         line-height: 34px;
+         opacity: 0.8;
+         border-radius: 0px 0px 20px 20px;
+
+         & p {
+             border-top: 1px solid #828282;
+             padding-top: 20px;
+         }
+         @include breakpoint (max-xxsmall){
+            font-size: 15px;
+         }
+     }
+
+ }
+
+
+ .accordion-item-2 {
+     & .accordion-body {
+         padding-top: 0;
+         padding-bottom: 0px;
+     }
+
+ }
+
+
+/*----------------------------------------*/
+        /* FAQ
+/*----------------------------------------*/
+ .faq-wrapper {
+    .faq-image {
+        border-radius: 20px;
+        img {
+            border-radius: 20px;
+        }
+    }
+ }
