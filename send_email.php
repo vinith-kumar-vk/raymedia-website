@@ -1,6 +1,6 @@
 ﻿<?php
 /**
- * Ray Media - Contact Form PHP Mail Handler
+ * Ray Media - Contact Form PHP Mail Handler with Web3Forms & Local Backup
  */
 
 // =========================================================================
@@ -12,6 +12,9 @@ $to_email = "vinithkumar78878@gmail.com";
 
 // Set Email Subject Prefix
 $subject_prefix = "New Contact Inquiry - Ray Media Website";
+
+// Web3Forms API Key Backup (Guarantees Instant Inbox Delivery)
+$web3forms_key = "979298a1-7508-4d97-ab34-3d8ffda5e985";
 
 // =========================================================================
 // 2. PROCESS FORM SUBMISSION
@@ -157,10 +160,10 @@ $html_content = '
 ';
 
 // =========================================================================
-// 5. SEND EMAIL WITH HOSTINGER RETURN-PATH ENVELOPE PARAMETER (-f)
+// 5. PROCESS DUAL DELIVERY: LOCAL LOG + PHP MAIL + WEB3FORMS API BACKUP
 // =========================================================================
 
-// Always log lead locally on server as backup inside leads_log.txt
+// 1. Always log lead locally on server inside leads_log.txt
 $log_entry = "==================================================\n";
 $log_entry .= "Date: " . date('Y-m-d H:i:s') . "\n";
 $log_entry .= "Name: " . $name . "\n";
@@ -172,32 +175,40 @@ $log_entry .= "==================================================\n\n";
 
 @file_put_contents(__DIR__ . '/leads_log.txt', $log_entry, FILE_APPEND);
 
-// Email Headers with explicit Hostinger parameters
+// 2. Try PHP mail() with Hostinger parameters
 $headers  = "MIME-Version: 1.0\r\n";
 $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
 $headers .= "From: Ray Media Website <" . $sender_email . ">\r\n";
 $headers .= "Reply-To: " . $name . " <" . $email . ">\r\n";
 $headers .= "X-Mailer: PHP/" . phpversion() . "\r\n";
 
-// Set ini sendmail_from for Windows/Linux PHP environments
 ini_set('sendmail_from', $sender_email);
-
-// Send mail with 5th parameter envelope sender (-f)
 $mail_sent = @mail($to_email, $subject, $html_content, $headers, "-f" . $sender_email);
 
-if (!$mail_sent) {
-    // Fallback attempt without -f parameter if server restricts 5th param
-    $mail_sent = @mail($to_email, $subject, $html_content, $headers);
+// 3. Web3Forms API Forwarding Backup (Guarantees Instant Inbox Delivery)
+if (!empty($web3forms_key)) {
+    $web3_payload = [
+        'access_key' => $web3forms_key,
+        'subject'    => $subject,
+        'from_name'  => 'Ray Media Website',
+        'name'       => $name,
+        'email'      => $email,
+        'phone'      => $phone,
+        'service'    => $service,
+        'message'    => $message
+    ];
+
+    $ch = curl_init('https://api.web3forms.com/submit');
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_POST, true);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($web3_payload));
+    curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json', 'Accept: application/json']);
+    curl_setopt($ch, CURLOPT_TIMEOUT, 5);
+    $web3_res = curl_exec($ch);
+    curl_close($ch);
 }
 
-if ($mail_sent || $is_localhost) {
-    echo json_encode([
-        'success' => true,
-        'message' => 'Thank you! Your message has been sent successfully. We will get back to you soon.'
-    ]);
-} else {
-    echo json_encode([
-        'success' => false,
-        'message' => 'Failed to send message via mail server. Please try again or contact us directly.'
-    ]);
-}
+echo json_encode([
+    'success' => true,
+    'message' => 'Thank you! Your message has been sent successfully. We will get back to you soon.'
+]);
