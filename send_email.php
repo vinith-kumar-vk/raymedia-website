@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Ray Media - Contact Form PHP Mail Handler
  */
@@ -8,7 +8,7 @@
 // =========================================================================
 
 // Set your receiving email address here
-$to_email = "vinithkumar78878@gmail.com";
+$to_email = "vinithkumar78878@gmail.com"; 
 
 // Set Email Subject Prefix
 $subject_prefix = "New Contact Inquiry - Ray Media Website";
@@ -52,16 +52,16 @@ if (is_array($json_data) && !empty($json_data)) {
 }
 
 // Extract and sanitize form fields
-$name = isset($input['name']) ? trim(strip_tags($input['name'])) : '';
-$phone = isset($input['phone']) ? trim(strip_tags($input['phone'])) : '';
-$email = isset($input['email']) ? trim(strip_tags($input['email'])) : '';
+$name    = isset($input['name'])    ? trim(strip_tags($input['name']))    : '';
+$phone   = isset($input['phone'])   ? trim(strip_tags($input['phone']))   : '';
+$email   = isset($input['email'])   ? trim(strip_tags($input['email']))   : '';
 $service = isset($input['service']) ? trim(strip_tags($input['service'])) : '';
 $message = isset($input['message']) ? trim(strip_tags($input['message'])) : '';
 
 // Remove newlines from single-line fields to prevent header injection
-$name = str_replace(["\r", "\n"], '', $name);
-$email = str_replace(["\r", "\n"], '', $email);
-$phone = str_replace(["\r", "\n"], '', $phone);
+$name    = str_replace(["\r", "\n"], '', $name);
+$email   = str_replace(["\r", "\n"], '', $email);
+$phone   = str_replace(["\r", "\n"], '', $phone);
 $service = str_replace(["\r", "\n"], '', $service);
 
 // =========================================================================
@@ -94,7 +94,11 @@ if (empty($message)) {
 
 $domain_name = isset($_SERVER['SERVER_NAME']) ? $_SERVER['SERVER_NAME'] : 'raymedia.in';
 $is_localhost = in_array($_SERVER['SERVER_NAME'], ['localhost', '127.0.0.1', '::1']);
-$subject = $subject_prefix . ($service ? " ($service)" : "");
+$subject     = $subject_prefix . ($service ? " ($service)" : "");
+
+// Clean Domain for Sender Header
+$clean_domain = str_replace(['http://', 'https://', 'www.'], '', $domain_name);
+$sender_email = "leads@" . $clean_domain;
 
 // HTML Email Body
 $html_content = '
@@ -153,42 +157,43 @@ $html_content = '
 ';
 
 // =========================================================================
-// 5. SEND EMAIL / LOCAL FALLBACK
+// 5. SEND EMAIL WITH HOSTINGER RETURN-PATH ENVELOPE PARAMETER (-f)
 // =========================================================================
 
-// Email Headers
-$from_email = "no-reply@" . $domain_name;
+// Always log lead locally on server as backup inside leads_log.txt
+$log_entry = "==================================================\n";
+$log_entry .= "Date: " . date('Y-m-d H:i:s') . "\n";
+$log_entry .= "Name: " . $name . "\n";
+$log_entry .= "Email: " . $email . "\n";
+$log_entry .= "Phone: " . $phone . "\n";
+$log_entry .= "Service: " . $service . "\n";
+$log_entry .= "Message: " . $message . "\n";
+$log_entry .= "==================================================\n\n";
 
-$headers = "MIME-Version: 1.0" . "\r\n";
-$headers .= "Content-Type: text/html; charset=UTF-8" . "\r\n";
-$headers .= "From: Ray Media Website <" . $from_email . ">" . "\r\n";
-$headers .= "Reply-To: " . $name . " <" . $email . ">" . "\r\n";
-$headers .= "X-Mailer: PHP/" . phpversion();
+@file_put_contents(__DIR__ . '/leads_log.txt', $log_entry, FILE_APPEND);
 
-// Attempt to send email via mail server
-$mail_sent = @mail($to_email, $subject, $html_content, $headers);
+// Email Headers with explicit Hostinger parameters
+$headers  = "MIME-Version: 1.0\r\n";
+$headers .= "Content-Type: text/html; charset=UTF-8\r\n";
+$headers .= "From: Ray Media Website <" . $sender_email . ">\r\n";
+$headers .= "Reply-To: " . $name . " <" . $email . ">\r\n";
+$headers .= "X-Mailer: PHP/" . phpversion() . "\r\n";
 
-if ($mail_sent) {
+// Set ini sendmail_from for Windows/Linux PHP environments
+ini_set('sendmail_from', $sender_email);
+
+// Send mail with 5th parameter envelope sender (-f)
+$mail_sent = @mail($to_email, $subject, $html_content, $headers, "-f" . $sender_email);
+
+if (!$mail_sent) {
+    // Fallback attempt without -f parameter if server restricts 5th param
+    $mail_sent = @mail($to_email, $subject, $html_content, $headers);
+}
+
+if ($mail_sent || $is_localhost) {
     echo json_encode([
         'success' => true,
         'message' => 'Thank you! Your message has been sent successfully. We will get back to you soon.'
-    ]);
-} else if ($is_localhost) {
-    // LOCALHOST XAMPP FALLBACK: Save lead to leads_log.txt for local testing verification
-    $log_entry = "==================================================\n";
-    $log_entry .= "Date: " . date('Y-m-d H:i:s') . "\n";
-    $log_entry .= "Name: " . $name . "\n";
-    $log_entry .= "Email: " . $email . "\n";
-    $log_entry .= "Phone: " . $phone . "\n";
-    $log_entry .= "Service: " . $service . "\n";
-    $log_entry .= "Message: " . $message . "\n";
-    $log_entry .= "==================================================\n\n";
-
-    @file_put_contents(__DIR__ . '/leads_log.txt', $log_entry, FILE_APPEND);
-
-    echo json_encode([
-        'success' => true,
-        'message' => 'Thank you! Your message has been received successfully.'
     ]);
 } else {
     echo json_encode([
