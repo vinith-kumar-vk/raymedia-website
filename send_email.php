@@ -8,7 +8,7 @@
 // =========================================================================
 
 // Set your receiving email address here
-$to_email = "vinithkumar78878@gmail.com"; 
+$to_email = "dm@raymedia.in"; 
 
 // Set Email Subject Prefix
 $subject_prefix = "New Contact Inquiry - Ray Media Website";
@@ -170,7 +170,7 @@ $log_entry .= "Service: " . $service . "\n";
 $log_entry .= "Message: " . $message . "\n";
 $log_entry .= "==================================================\n\n";
 
-@file_put_contents(__DIR__ . '/leads_log.txt', $log_entry, FILE_APPEND);
+@file_put_contents(__DIR__ . '/cdata/leads_log.txt', $log_entry, FILE_APPEND);
 
 // Standard PHP mail() headers
 $headers  = "MIME-Version: 1.0\r\n";

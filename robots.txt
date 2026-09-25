@@ -1,0 +1,6 @@
+User-Agent:*
+Allow:/
+
+Disallow: /cdata/
+
+Sitemap: https://www.raymedia.in/sitemap.xml

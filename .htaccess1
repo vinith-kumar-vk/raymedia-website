@@ -1,0 +1,28 @@
+# ----------------------------------------------------------------------
+# ENFORCE WWW AND HTTPS (SSL)
+# ----------------------------------------------------------------------
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    
+    # Redirects non-www or non-HTTPS traffic to https://yourdomain.com
+    RewriteCond %{HTTP_HOST} !^www\. [NC,OR]
+    RewriteCond %{HTTPS} off
+    RewriteRule ^(.*)$ https://www.raymedia.in/$1 [R=301,L]
+</IfModule>
+
+# ----------------------------------------------------------------------
+# 2. REMOVE .HTML EXTENSION FROM URLS
+# ----------------------------------------------------------------------
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Externally redirect /page.html to /page
+    RewriteCond %{THE_REQUEST} ^[A-Z]{3,}\s/([^.]+)\.html [NC]
+    RewriteRule ^ %1 [R=301,L]
+
+    # Internally point /page back to /page.html so the server can read it
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME}\.html -f
+    RewriteRule ^(.*)$ $1.html [L]
+</IfModule>
+
